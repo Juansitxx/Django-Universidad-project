@@ -1,21 +1,20 @@
 {% extends "academia/base.html" %}
 {% block title %}{{ estudiante }}{% endblock %}
 {% block content %}
-    <h2>{{ estudiante.nombre }} {{ estudiante.apellido }}</h2>
-    <p><strong>Email:</strong> {{ estudiante.email }}</p>
-    <p><strong>Código:</strong> {{ estudiante.codigo_estudiantil }}</p>
+    <h2 class="mb-1">{{ estudiante.nombre }} {{ estudiante.apellido }}</h2>
+    <p class="text-muted"><strong>Email:</strong> {{ estudiante.email }}</p>
+    <p class="text-muted"><strong>Código:</strong> {{ estudiante.codigo_estudiantil }}</p>
 
-    <h3>Cursos inscritos</h3>
-    <ul>
+    <h5 class="mt-4">Cursos inscritos</h5>
+    <ul class="list-group mb-4">
         {% for inscripcion in estudiante.inscripciones.all %}
-            <li>
-                <a href="{% url 'academia:detalle_curso' inscripcion.curso.pk %}">
-                    {{ inscripcion.curso }}
-                </a>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ inscripcion.curso }}
+                <a href="{% url 'academia:detalle_curso' inscripcion.curso.pk %}" class="btn btn-sm btn-outline-dark">Ver</a>
             </li>
         {% empty %}
-            <p>Este estudiante no tiene cursos inscritos.</p>
+            <li class="list-group-item text-muted">No tiene cursos inscritos.</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'academia:lista_estudiantes' %}">← Volver a Estudiantes</a>
+    <a href="{% url 'academia:lista_estudiantes' %}" class="btn btn-secondary">← Volver</a>
 {% endblock %}

@@ -1,24 +1,19 @@
 {% extends "academia/base.html" %}
 {% block title %}{{ curso.nombre }}{% endblock %}
 {% block content %}
-    <h2>{{ curso.codigo }} - {{ curso.nombre }}</h2>
-    <p><strong>Programa:</strong>
-        <a href="{% url 'academia:detalle_programa' curso.programa.pk %}">
-            {{ curso.programa.nombre }}
-        </a>
-    </p>
+    <h2 class="mb-1">{{ curso.codigo }} — {{ curso.nombre }}</h2>
+    <p class="text-muted mb-4">Programa: <a href="{% url 'academia:detalle_programa' curso.programa.pk %}">{{ curso.programa.nombre }}</a></p>
 
-    <h3>Estudiantes inscritos</h3>
-    <ul>
+    <h5>Estudiantes inscritos</h5>
+    <ul class="list-group mb-4">
         {% for inscripcion in curso.inscripciones.all %}
-            <li>
-                <a href="{% url 'academia:detalle_estudiante' inscripcion.estudiante.pk %}">
-                    {{ inscripcion.estudiante }}
-                </a>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ inscripcion.estudiante }}
+                <a href="{% url 'academia:detalle_estudiante' inscripcion.estudiante.pk %}" class="btn btn-sm btn-outline-dark">Ver</a>
             </li>
         {% empty %}
-            <p>No hay estudiantes inscritos en este curso.</p>
+            <li class="list-group-item text-muted">No hay estudiantes inscritos.</li>
         {% endfor %}
     </ul>
-    <a href="{% url 'academia:lista_cursos' %}">← Volver a Cursos</a>
+    <a href="{% url 'academia:lista_cursos' %}" class="btn btn-secondary">← Volver</a>
 {% endblock %}
