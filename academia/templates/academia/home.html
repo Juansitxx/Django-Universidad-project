@@ -1,12 +1,19 @@
 {% extends "academia/base.html" %}
 {% block title %}Inicio{% endblock %}
 {% block content %}
-    <h2>Bienvenido al Sistema Académico</h2>
-    <p>Consulta la información académica de la universidad.</p>
-
-    <ul>
-        <li><a href="{% url 'academia:lista_programas' %}">Ver Programas</a></li>
-        <li><a href="{% url 'academia:lista_cursos' %}">Ver Cursos</a></li>
-        <li><a href="{% url 'academia:lista_estudiantes' %}">Ver Estudiantes</a></li>
-    </ul>
+    <div class="p-5 mb-4 bg-white rounded shadow-sm">
+        <h1 class="fw-bold">Sistema Académico Universitario</h1>
+        <p class="text-muted">Consulta programas, cursos y estudiantes de la universidad.</p>
+        <div class="row mt-4">
+            <div class="col-md-4">
+                <a href="{% url 'academia:lista_programas' %}" class="btn btn-dark w-100">Ver Programas</a>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'academia:lista_cursos' %}" class="btn btn-dark w-100">Ver Cursos</a>
+            </div>
+            <div class="col-md-4">
+                <a href="{% url 'academia:lista_estudiantes' %}" class="btn btn-dark w-100">Ver Estudiantes</a>
+            </div>
+        </div>
+    </div>
 {% endblock %}
