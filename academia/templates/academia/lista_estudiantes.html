@@ -1,17 +1,15 @@
 {% extends "academia/base.html" %}
 {% block title %}Estudiantes{% endblock %}
 {% block content %}
-    <h2>Estudiantes</h2>
-    <ul>
+    <h2 class="mb-4">Estudiantes</h2>
+    <ul class="list-group">
         {% for estudiante in estudiantes %}
-            <li>
-                <a href="{% url 'academia:detalle_estudiante' estudiante.pk %}">
-                    {{ estudiante.nombre }} {{ estudiante.apellido }}
-                </a>
-                — {{ estudiante.codigo_estudiantil }}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <span><strong>{{ estudiante.nombre }} {{ estudiante.apellido }}</strong> <span class="text-muted">— {{ estudiante.codigo_estudiantil }}</span></span>
+                <a href="{% url 'academia:detalle_estudiante' estudiante.pk %}" class="btn btn-sm btn-outline-dark">Ver</a>
             </li>
         {% empty %}
-            <p>No hay estudiantes registrados.</p>
+            <li class="list-group-item text-muted">No hay estudiantes registrados.</li>
         {% endfor %}
     </ul>
 {% endblock %}
