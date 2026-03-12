@@ -1,0 +1,16 @@
+{% extends "academia/base.html" %}
+{% block title %}Programas{% endblock %}
+{% block content %}
+    <h2>Programas Académicos</h2>
+    <ul>
+        {% for programa in programas %}
+            <li>
+                <a href="{% url 'academia:detalle_programa' programa.pk %}">
+                    {{ programa.nombre }}
+                </a>
+            </li>
+        {% empty %}
+            <p>No hay programas registrados.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
