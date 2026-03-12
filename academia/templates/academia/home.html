@@ -1,7 +1,12 @@
-{% extends "tienda/base.html" %}
-
-{% block title %}Inicio - Django AI Lab{% endblock %}
-
+{% extends "academia/base.html" %}
+{% block title %}Inicio{% endblock %}
 {% block content %}
-<h1>Bienvenido</h1>
+    <h2>Bienvenido al Sistema Académico</h2>
+    <p>Consulta la información académica de la universidad.</p>
+
+    <ul>
+        <li><a href="{% url 'academia:lista_programas' %}">Ver Programas</a></li>
+        <li><a href="{% url 'academia:lista_cursos' %}">Ver Cursos</a></li>
+        <li><a href="{% url 'academia:lista_estudiantes' %}">Ver Estudiantes</a></li>
+    </ul>
 {% endblock %}

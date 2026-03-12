@@ -1,0 +1,17 @@
+{% extends "academia/base.html" %}
+{% block title %}Cursos{% endblock %}
+{% block content %}
+    <h2>Cursos</h2>
+    <ul>
+        {% for curso in cursos %}
+            <li>
+                <a href="{% url 'academia:detalle_curso' curso.pk %}">
+                    {{ curso.codigo }} - {{ curso.nombre }}
+                </a>
+                — {{ curso.programa.nombre }}
+            </li>
+        {% empty %}
+            <p>No hay cursos registrados.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "academia/base.html" %}
+{% block title %}Estudiantes{% endblock %}
+{% block content %}
+    <h2>Estudiantes</h2>
+    <ul>
+        {% for estudiante in estudiantes %}
+            <li>
+                <a href="{% url 'academia:detalle_estudiante' estudiante.pk %}">
+                    {{ estudiante.nombre }} {{ estudiante.apellido }}
+                </a>
+                — {{ estudiante.codigo_estudiantil }}
+            </li>
+        {% empty %}
+            <p>No hay estudiantes registrados.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

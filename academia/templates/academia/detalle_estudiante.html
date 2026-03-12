@@ -1,0 +1,21 @@
+{% extends "academia/base.html" %}
+{% block title %}{{ estudiante }}{% endblock %}
+{% block content %}
+    <h2>{{ estudiante.nombre }} {{ estudiante.apellido }}</h2>
+    <p><strong>Email:</strong> {{ estudiante.email }}</p>
+    <p><strong>Código:</strong> {{ estudiante.codigo_estudiantil }}</p>
+
+    <h3>Cursos inscritos</h3>
+    <ul>
+        {% for inscripcion in estudiante.inscripciones.all %}
+            <li>
+                <a href="{% url 'academia:detalle_curso' inscripcion.curso.pk %}">
+                    {{ inscripcion.curso }}
+                </a>
+            </li>
+        {% empty %}
+            <p>Este estudiante no tiene cursos inscritos.</p>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'academia:lista_estudiantes' %}">← Volver a Estudiantes</a>
+{% endblock %}
